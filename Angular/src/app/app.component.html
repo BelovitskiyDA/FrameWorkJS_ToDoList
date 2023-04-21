@@ -1,0 +1,20 @@
+<div class="container">
+	<h1 class="mainTitle">Daily To Do List</h1>
+
+	<div class="form-field">
+	  <input class="addInput" placeholder="Add new list item" [(ngModel)]="value">
+	  <button  class="addButton" *ngIf="value" (click)="Add()">
+	    Add
+	  </button>
+	</div>
+
+	<div class="tasks">
+		<app-task *ngFor="let item of tasks" [task]="item"></app-task>
+	</div>
+
+	<hr/>
+	<p class="counter">{{tasks.length}} item selected</p>
+	<p class="clear" (click)="Clear()">Clear All</p>
+</div>
+
+

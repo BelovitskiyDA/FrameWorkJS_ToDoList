@@ -1,0 +1,4 @@
+<div class="checkboxContainer">
+      <input type="checkbox" class="checkbox" [attr.id]="task.id" [(ngModel)]="task.isDone">
+      <label class="checkboxText" [attr.for]="task.id">{{task.text}}</label>
+</div>
