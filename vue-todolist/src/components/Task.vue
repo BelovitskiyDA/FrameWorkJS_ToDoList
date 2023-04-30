@@ -1,0 +1,106 @@
+<template>
+    <div class="checkboxContainer">
+    <input type="checkbox" class="checkbox" v-bind:id="task.id" >
+    <label class="checkboxText" v-bind:for="task.id"  v-on:click="task.isDone=!task.isDone" >{{task.text}}</label>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "Task",
+    props:{task:{
+        type:Object,
+        required:true
+        }
+    },
+
+}
+</script>
+
+<style>
+.checkboxContainer
+{
+    position: relative;
+    margin-bottom: 38px;
+}
+
+input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    /*
+      height: 32px;
+      width: 32px;
+      border:none;
+      margin: 0;
+      padding:0;
+      border-radius: 50%;
+      user-select: none;
+      position: relative;
+      display: inline-block;*/
+}
+
+.checkboxText{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #001747;
+    padding-left: 48px;
+    max-width: 600px;
+    display: inline-block;
+    word-wrap:break-word;
+
+    /*left: 16px;*/
+    /*position: relative;
+    display: inline-block;*/
+}
+
+.checkboxText:before{
+    content: "";
+    display: block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #EEEEEE;
+    box-shadow: 0px 0px 3px 0px rgba(34, 60, 80, 0.2);
+    margin-top: -6px;
+    border-radius: 50%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 1;
+}
+
+.checkboxText:after{
+    content: "";
+    display: block;
+    /*height: 16px;
+    width: 16px;*/
+    /*border:none;*/
+    background: url("/src/assets/Vector.svg") no-repeat;
+    background-size: 16px 16px;
+    padding:8px;
+    /*background-color: #00D8A7;*/
+    margin-top: -6px;
+    border-radius: 50%;
+    opacity: 0;
+    position: absolute;
+    left:8px;
+    top:8px;
+    z-index: 2;
+}
+
+
+.checkbox:checked+.checkboxText:before{
+    border:none;
+    background-color: #00D8A7;
+}
+
+.checkbox:checked+.checkboxText:after{
+    opacity: 1;
+}
+
+.checkbox:checked+.checkboxText{
+    text-decoration: line-through;
+    color: #8F98A8;
+}
+
+</style>
